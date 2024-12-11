@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Sarah Bills</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Ensures sections are stacked vertically */
+            align-items: center;
+        }
+
+        /* Page Header (Recipe Generator header section) */
+        .masthead {
+            width: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+        .masthead .page-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .masthead .subheading {
+            font-size: 1.5rem;
+        }
+
+        /* Chatbot Section */
+        .chatbox {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 40px; /* Space between Skills and Chatbot */
+        }
+        .chatbox-header {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .chat-content {
+            flex-grow: 1;
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .input-section {
+            display: flex;
+            gap: 10px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .bot-response, .user-input {
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .bot-response {
+            background-color: #e0e0e0;
+        }
+        .user-input {
+            background-color: #d1f7d1;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="index.html">Sarah Bills</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="food.html">Food Blog</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="resume.html">Resume</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="web.html">Web App</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header (Skills) -->
+    <header class="masthead" style="background-image: url('data:image/jpeg;base64,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');">
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="page-heading">
+                        <h1>Recipe Generator</h1>
+                        <span class="subheading">Input a Main Ingredient for a Unique Recipe!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Chatbot Section -->
+    <div class="chatbox">
+        <div class="chatbox-header">
+            Recipe Chatbot
+        </div>
+        <div class="chat-content" id="chat-content">
+            <div class="bot-response">Hello! Tell me the ingredients you have, and I'll suggest some recipes.</div>
+        </div>
+        <div class="input-section">
+            <input type="text" id="ingredient-input" placeholder="Enter ingredients..." />
+            <button onclick="getRecipeSuggestions()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to fetch recipe suggestions based on input ingredients
+        async function getRecipeSuggestions() {
+            const input = document.getElementById('ingredient-input').value.trim();
+            const chatContent = document.getElementById('chat-content');
+            
+            if (!input) {
+                return; // Exit if input is empty
+            }
+
+            // Display user's input
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('user-input');
+            userMessage.textContent = input;
+            chatContent.appendChild(userMessage);
+
+            // Display loading message
+            let loadingMessage = document.createElement('div');
+            loadingMessage.classList.add('bot-response');
+            loadingMessage.textContent = 'Searching for recipes...';
+            chatContent.appendChild(loadingMessage);
+            chatContent.scrollTop = chatContent.scrollHeight;
+
+            // Prepare the MealDB API URL (replace spaces with underscores in ingredients)
+            const ingredientParam = input.replace(/\s+/g, '_');
+            const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredientParam}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                // Remove the loading message
+                chatContent.removeChild(loadingMessage);
+
+                if (data.meals) {
+                    // Show the recipe suggestions
+                    data.meals.forEach(recipe => {
+                        const botMessage = document.createElement('div');
+                        botMessage.classList.add('bot-response');
+                        botMessage.innerHTML = `<strong>${recipe.strMeal}</strong><br><img src="${recipe.strMealThumb}" alt="${recipe.strMeal}" style="width: 100px; height: 100px;">`;
+                        chatContent.appendChild(botMessage);
+                    });
+                } else {
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('bot-response');
+                    botMessage.textContent = "Sorry, I couldn't find any recipes with those ingredients. Try again!";
+                    chatContent.appendChild(botMessage);
+                }
+
+                chatContent.scrollTop = chatContent.scrollHeight;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                const botMessage = document.createElement('div');
+                botMessage.classList.add('bot-response');
+                botMessage.textContent = "Oops, something went wrong. Please try again later.";
+                chatContent.appendChild(botMessage);
+                chatContent.scrollTop = chatContent.scrollHeight;
+            }
+
+            // Clear the input field
+            document.getElementById('ingredient-input').value = '';
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+<!-- <footer class="border-top">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <ul class="list-inline text-center">
+                    <li class="list-inline-item">
+                        <a href="#!">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="small text-center text-muted fst-italic">Copyright &copy; Sarah Bills 2024</div>
+            </div>
+        </div>
+    </div>
+</footer> -->
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</html>
